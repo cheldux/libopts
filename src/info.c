@@ -6,7 +6,7 @@
 /*   By: thschnei <thschnei@student.42perpignan.fr  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/27 20:24:33 by thschnei          #+#    #+#             */
-/*   Updated: 2025/04/27 20:24:42 by thschnei         ###   ########.fr       */
+/*   Updated: 2025/04/27 20:41:51 by thschnei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ void
 	unsigned int	c;
 
 	c = 0;
-	printf("\noptions:\n");
+	ft_printf("\noptions:\n");
 	while (c < app.opt.s)
 	{
-		printf("\t%s %s\n", opt[c].s, opt[c].desc);
+		ft_printf("\t%s %s\n", opt[c].s, opt[c].desc);
 		c++;
 	}
 }
@@ -30,6 +30,6 @@ void
 void
 	_usage(const t_app app)
 {
-	printf("usage:%s\n", app.opt.usage);
+	ft_printf("usage:%s\n", app.opt.usage);
 	_optional(app);
 }

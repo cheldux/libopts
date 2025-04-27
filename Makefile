@@ -6,7 +6,7 @@
 #    By: thschnei <thschnei@student.42perpignan.fr  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/19 14:49:45 by thschnei          #+#    #+#              #
-#    Updated: 2025/04/27 18:26:24 by thschnei         ###   ########.fr        #
+#    Updated: 2025/04/27 20:55:34 by thschnei         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,8 @@ NAME = libopts.a
 
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
+IFLAGS = -I../ft_printf
+CFLAGS += $(IFLAGS)
 #CFLAGS += -ggdb #-fsanitize=address
 
 FILES =	error.c \

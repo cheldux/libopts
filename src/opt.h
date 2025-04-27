@@ -6,16 +6,15 @@
 /*   By: thschnei <thschnei@student.42perpignan.fr  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/27 20:24:37 by thschnei          #+#    #+#             */
-/*   Updated: 2025/04/27 20:24:42 by thschnei         ###   ########.fr       */
+/*   Updated: 2025/04/27 20:42:18 by thschnei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef OPT_H
 # define OPT_H
-# include <stddef.h>
 # include <stdlib.h>
-# include <stdio.h>
 # include "utils.h"
+# include <includes/ft_printf.h>
 
 typedef struct s_opt
 {

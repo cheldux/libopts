@@ -6,7 +6,7 @@
 /*   By: thschnei <thschnei@student.42perpignan.fr  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/27 20:24:35 by thschnei          #+#    #+#             */
-/*   Updated: 2025/04/27 20:24:42 by thschnei         ###   ########.fr       */
+/*   Updated: 2025/04/27 20:41:51 by thschnei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void
 
 	if (ret != ac)
 	{
-		dprintf(2, "unknown option: %s\n\n", av[ret]);
+		ft_dprintf(2, "unknown option: %s\n\n", av[ret]);
 		_usage(*app);
 		exit(1);
 	}
