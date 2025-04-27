@@ -6,7 +6,7 @@
 /*   By: thschnei <thschnei@student.42perpignan.fr  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/27 20:24:37 by thschnei          #+#    #+#             */
-/*   Updated: 2025/04/27 20:42:18 by thschnei         ###   ########.fr       */
+/*   Updated: 2025/04/27 22:09:40 by thschnei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	_optional(const t_app app);
 
 void	_usage(const t_app app);
 
-void	_parse_args(t_app *app, const int ac, const char **av);
+int		_parse_args(t_app *app, const int ac, const char **av);
 
 void	_init_opt(const char *usage, const t_opt *opt, size_t siz, t_app *app);
 

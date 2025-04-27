@@ -6,13 +6,14 @@
 /*   By: thschnei <thschnei@student.42perpignan.fr  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/27 20:24:35 by thschnei          #+#    #+#             */
-/*   Updated: 2025/04/27 20:41:51 by thschnei         ###   ########.fr       */
+/*   Updated: 2025/04/27 22:09:44 by thschnei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "opt.h"
 
-int	_loop_args(t_app *app, const int ac, const char **av)
+int
+	_loop_args(t_app *app, const int ac, const char **av)
 {
 	const t_opt		*opt = app->opt.opt;
 	int				i;
@@ -36,17 +37,12 @@ int	_loop_args(t_app *app, const int ac, const char **av)
 	return (i);
 }
 
-void
+int
 	_parse_args(t_app *app, const int ac, const char **av)
 {
 	const int	ret = _loop_args(app, ac, av);
 
-	if (ret != ac)
-	{
-		ft_dprintf(2, "unknown option: %s\n\n", av[ret]);
-		_usage(*app);
-		exit(1);
-	}
+	return (ret);
 }
 
 void
