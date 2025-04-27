@@ -6,7 +6,7 @@
 /*   By: thschnei <thschnei@student.42perpignan.fr  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/27 20:24:35 by thschnei          #+#    #+#             */
-/*   Updated: 2025/04/27 22:09:44 by thschnei         ###   ########.fr       */
+/*   Updated: 2025/04/28 00:21:21 by thschnei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,14 @@ int
 	return (ret);
 }
 
-void
-	_init_opt(const char *usage, const t_opt *opt, size_t siz, t_app *app)
+t_app
+	*_init_opt(const char *usage, const t_opt *opt, size_t siz, void *data)
 {
-	app->opt.usage = usage;
-	app->opt.opt = opt;
-	app->opt.s = siz;
+	static t_app	app;
+
+	app.data = data;
+	app.opt.usage = usage;
+	app.opt.opt = opt;
+	app.opt.s = siz;
+	return (&app);
 }
