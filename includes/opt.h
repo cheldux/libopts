@@ -1,35 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   info.c                                             :+:      :+:    :+:   */
+/*   opt.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thschnei <thschnei@student.42perpignan.fr  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/27 20:24:33 by thschnei          #+#    #+#             */
-/*   Updated: 2025/04/27 20:24:42 by thschnei         ###   ########.fr       */
+/*   Created: 2025/04/27 20:24:57 by thschnei          #+#    #+#             */
+/*   Updated: 2025/04/27 20:24:59 by thschnei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "opt.h"
+#ifndef OPT_H
+# define OPT_H
+# include <stdlib.h>
 
-void
-	_optional(const t_app app)
+typedef struct s_opt
 {
-	const t_opt		*opt = app.opt.opt;
-	unsigned int	c;
+	const char	*s;
+	const char	*desc;
+	void		(*f)(void *data, const char **str);
+	int			ac;
+}	t_opt;
 
-	c = 0;
-	printf("\noptions:\n");
-	while (c < app.opt.s)
-	{
-		printf("\t%s %s\n", opt[c].s, opt[c].desc);
-		c++;
-	}
-}
-
-void
-	_usage(const t_app app)
+typedef struct s_app
 {
-	printf("usage:%s\n", app.opt.usage);
-	_optional(app);
-}
+	void	*data;
+	char	reserved[24];
+}	t_app;
+
+void	_parse_args(t_app *app, const int ac, const char **av);
+
+void	_init_opt(const char *usage, const t_opt *opt, size_t siz, t_app *app);
+
+#endif

@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   opt.h                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: thschnei <thschnei@student.42perpignan.fr  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/04/27 20:24:37 by thschnei          #+#    #+#             */
+/*   Updated: 2025/04/27 20:24:42 by thschnei         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef OPT_H
 # define OPT_H
-#include <stddef.h>
+# include <stddef.h>
 # include <stdlib.h>
 # include <stdio.h>
 # include "utils.h"
@@ -9,32 +21,31 @@ typedef struct s_opt
 {
 	const char	*s;
 	const char	*desc;
-	void		(*f)(void *app, char **str);
+	void		(*f)(void *data, const char **str);
 	int			ac;
 }	t_opt;
 
 typedef struct s_opt_l
 {
+	const char	*usage;
 	const t_opt	*opt;
 	size_t		s;
 }	t_opt_l;
 
 typedef struct s_app
 {
-	void			*data;
-	const t_opt_l	opt;
+	void	*data;
+	t_opt_l	opt;
 }	t_app;
 
-void	_optional(t_app app);
+void	_optional(const t_app app);
 
-void	_usage(t_app app, char **av);
+void	_usage(const t_app app);
 
-void	_parse_args(t_app *app, int ac, char **av);
+void	_parse_args(t_app *app, const int ac, const char **av);
 
-void	_init_opt(t_opt *opt, t_app app);
+void	_init_opt(const char *usage, const t_opt *opt, size_t siz, t_app *app);
 
-void	_not_enough(t_app app, char **av);
-
-void	_check_end(int ac, int i, t_app app, char **av);
+void	_not_enough(const t_app app);
 
 #endif
