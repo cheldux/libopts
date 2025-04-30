@@ -6,7 +6,7 @@
 #    By: thschnei <thschnei@student.42perpignan.fr  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/19 14:49:45 by thschnei          #+#    #+#              #
-#    Updated: 2025/04/29 22:24:25 by thschnei         ###   ########.fr        #
+#    Updated: 2025/04/30 05:32:21 by thschnei         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CC = gcc
 CFLAGS = -Wall -Wextra -Werror -O2
 IFLAGS = -I../ft_printf
 CFLAGS += $(IFLAGS)
-CFLAGS += -ggdb #-fsanitize=address
+#CFLAGS += -ggdb #-fsanitize=address
 
 FILES =	args.c \
 		callstack.c \
