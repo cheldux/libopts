@@ -1,48 +1,28 @@
 # Libopts
 this simple C library allows you to easily parse arguments, it is 42 norme compliant so you'll need your own ft_printf to use it.
 
-example program:
+example of how to use the lib:
 ```c
-typedef struct s_test
-{
-	char	*str;
-	void	*opt_ptr;
-}	t_test;
+void	fun1(void *data, const char **av);
+void	fun2(void *data, const char **av);
 
-void	assign(void *data, const char **av)
-{
-	t_test	*var;
-
-	var = (t_test *)data;
-	var->str = (char *)*av;
-}
-
-void	test(void *data, const char **av)
-{
-	(void)data;
-	(void)av;
-	ft_printf("hello\n");
-}
-
-void	*init(t_test *s)
+void	init(t_app *app)
 {
 	static t_opt	opts[] = {
-	{.s = "-c", .ac = 1, .desc = "assign next arg to app value", .f = assign},
-	{.s = "-t", .ac = 0, .desc = "test display", .f = test}};
+	{.s = "-r", .ac = 1, .desc = "function 1 desc", .f = fun1},
+	{.s = "-b", .ac = 0, .desc = "function 2 desc", .f = fun2}};
 
-	return (_init_opt("test program", opts, sizeof(opts) / sizeof(opts[0]), s));
+	_init_opt("test program", opts, sizeof(opts) / sizeof(opts[0]), app);
 }
 
 int	main(int argc, char **argv)
 {
-	t_test	test;
+	t_test  test;
+	t_app   app;
 
-	test.str = "test";
-	test.opt_ptr = init(&test);
-	ft_printf("value before parsing: %s\n", test.str);
-	int used = _parse_args(test.opt_ptr, argc, (const char **)argv);
-	ft_printf("value after parsing: %s\n", test.str);
-	ft_printf("used %d args out of %d\n", used, argc);
+	app.data = &test;
+	init(&app);
+	_parse_args(&app, argc, (const char **)argv);
 	return (0);
 }
 ```

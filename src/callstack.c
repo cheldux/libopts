@@ -6,13 +6,13 @@
 /*   By: thschnei <thschnei@student.42perpignan.fr  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 20:43:35 by thschnei          #+#    #+#             */
-/*   Updated: 2025/04/30 05:22:51 by thschnei         ###   ########.fr       */
+/*   Updated: 2025/04/30 05:37:40 by thschnei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "opt.h"
 
-inline void
+void
 	_callstack_append(t_callstack *c, unsigned int i)
 {
 	const unsigned long	s = sizeof(c->index);
@@ -30,7 +30,7 @@ inline void
 	c->index[c->size++] = i;
 }
 
-inline void
+void
 	_callstack_exec(t_app *app, const char **av)
 {
 	t_callstack	*c;
