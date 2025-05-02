@@ -6,7 +6,7 @@
 /*   By: thschnei <thschnei@student.42perpignan.fr  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/27 20:24:31 by thschnei          #+#    #+#             */
-/*   Updated: 2025/04/30 05:24:18 by thschnei         ###   ########.fr       */
+/*   Updated: 2025/05/02 15:04:39 by thschnei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,11 @@
 void
 	_not_enough(const t_app app)
 {
-	ft_dprintf(2, "not enough arguments provided.\n");
+	if (!(app.behavior & NO_PRINT_ERROR))
+		ft_dprintf(2, "not enough arguments provided.\n");
 	if (app.calls.index)
 		free(app.calls.index);
 	_usage(app);
-	exit(1);
+	if (!(app.behavior & NO_EXIT))
+		exit(1);
 }

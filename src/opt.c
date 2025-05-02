@@ -6,7 +6,7 @@
 /*   By: thschnei <thschnei@student.42perpignan.fr  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/27 20:24:35 by thschnei          #+#    #+#             */
-/*   Updated: 2025/04/29 22:22:51 by thschnei         ###   ########.fr       */
+/*   Updated: 2025/05/02 14:12:53 by thschnei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,12 @@ t_app
 	app.calls.cap = 0;
 	app.calls.size = 0;
 	app.calls.index = 0;
+	app.behavior = 0;
 	return (&app);
+}
+
+t_app	*_set_behavior(t_app *app, t_behavior behavior)
+{
+	app->behavior = behavior;
+	return (app);
 }

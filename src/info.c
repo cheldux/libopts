@@ -6,7 +6,7 @@
 /*   By: thschnei <thschnei@student.42perpignan.fr  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/27 20:24:33 by thschnei          #+#    #+#             */
-/*   Updated: 2025/04/27 22:05:00 by thschnei         ###   ########.fr       */
+/*   Updated: 2025/05/02 15:04:28 by thschnei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,9 @@ void
 void
 	_usage(const t_app app)
 {
-	ft_printf("usage:%s\n", app.opt.usage);
-	_optional(app);
+	if (!(app.behavior & NO_PRINT_USAGE))
+	{
+		ft_printf("Usage: %s\n", app.opt.usage);
+		_optional(app);
+	}
 }
