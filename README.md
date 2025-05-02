@@ -26,11 +26,13 @@ void	test(void *data, const char **av)
 
 void	*init(t_test *s)
 {
+	void			*ret;
 	static t_opt	opts[] = {
 	{.s = "-c", .ac = 1, .desc = "assign next arg to app value", .f = assign},
 	{.s = "-t", .ac = 0, .desc = "test display", .f = test}};
 
-	return (_init_opt("test program", opts, sizeof(opts) / sizeof(opts[0]), s));
+	ret = _init_opt("test program", opts, sizeof(opts) / sizeof(opts[0]), s);
+	return _set_behavior(ret, NO_EXIT);
 }
 
 int	main(int argc, char **argv)
