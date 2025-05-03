@@ -6,13 +6,13 @@
 /*   By: thschnei <thschnei@student.42perpignan.fr  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/27 20:24:31 by thschnei          #+#    #+#             */
-/*   Updated: 2025/05/02 15:04:39 by thschnei         ###   ########.fr       */
+/*   Updated: 2025/05/03 12:58:53 by thschnei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "opt.h"
 
-void
+int
 	_not_enough(const t_app app)
 {
 	if (!(app.behavior & NO_PRINT_ERROR))
@@ -22,4 +22,5 @@ void
 	_usage(app);
 	if (!(app.behavior & NO_EXIT))
 		exit(1);
+	return (-1);
 }

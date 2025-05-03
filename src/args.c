@@ -6,7 +6,7 @@
 /*   By: thschnei <thschnei@student.42perpignan.fr  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 16:28:19 by thschnei          #+#    #+#             */
-/*   Updated: 2025/05/02 15:39:16 by thschnei         ###   ########.fr       */
+/*   Updated: 2025/05/03 13:21:45 by thschnei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static inline unsigned int
 	return (j);
 }
 
-static inline unsigned int
+static inline int
 	_simple_hyphen(t_app *app, const int ac, const char **av, int *i)
 {
 	const t_opt		*opt = app->opt.opt;
@@ -55,10 +55,7 @@ static inline unsigned int
 		if (!ft_strncmp(opt[j].s, av[*i], ft_strlen(av[*i])))
 		{
 			if (*i + 1 + opt[j].ac > ac)
-			{
-				_not_enough(*app);
-				return (app->opt.s);
-			}
+				return (_not_enough(*app));
 			if (!(app->behavior & GET_CALLER))
 				(*i)++;
 			opt[j].f(app->data, &av[*i]);
@@ -71,7 +68,7 @@ static inline unsigned int
 	return (j);
 }
 
-static inline unsigned int
+static inline int
 	_double_hyphen(t_app *app, const int ac, const char **av, int *i)
 {
 	const t_opt		*opt = app->opt.opt;
@@ -83,10 +80,7 @@ static inline unsigned int
 		if (!ft_strncmp(opt[j].s, av[*i], ft_strlen(av[*i])))
 		{
 			if (*i + 1 + opt[j].ac > ac)
-			{
-				_not_enough(*app);
-				return (app->opt.s);
-			}
+				return (_not_enough(*app));
 			if (!(app->behavior & GET_CALLER))
 				(*i)++;
 			opt[j].f(app->data, &av[*i]);
@@ -102,24 +96,28 @@ static inline unsigned int
 int
 	_loop_args(t_app *app, const int ac, const char **av)
 {
-	int				i;
-	unsigned int	j;
+	int	i;
+	int	j;
 
 	i = 1;
 	j = 0;
-	while (j < app->opt.s && i < ac && *av[i] == '-')
+	while (j >= 0 && j < (signed)app->opt.s && i < ac && *av[i] == '-')
 	{
 		if (!ft_strncmp(av[i], "--", 2))
 		{
 			if (!(app->behavior & NO_HELP) && !ft_strncmp(av[i], "--help", 6))
 			{
 				_usage(*app);
-				return (-1);
+				if (!(app->behavior & NO_EXIT))
+					exit(0);
+				return (0);
 			}
 			j = _double_hyphen(app, ac, av, &i);
 		}
 		else
 			j = _simple_hyphen(app, ac, av, &i);
 	}
+	if (j < 0)
+		return (j);
 	return (i);
 }

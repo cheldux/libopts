@@ -6,7 +6,7 @@
 /*   By: thschnei <thschnei@student.42perpignan.fr  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/27 20:24:57 by thschnei          #+#    #+#             */
-/*   Updated: 2025/05/02 15:07:51 by thschnei         ###   ########.fr       */
+/*   Updated: 2025/05/03 13:02:48 by thschnei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,13 @@ typedef struct s_opt
 	int			ac;
 }	t_opt;
 
-int		_parse_args(void *opt_ptr, const int ac, const char **av);
+int		
+_parse_args(void *opt_ptr, const int ac, const char **av);
 
-void	*_init_opt(const char *usage, const t_opt *opt, size_t siz, void *data);
+void	
+*_init_opt(const char *usage, const t_opt *opt, size_t siz, void *data);
 
-void	*_set_behavior(void *opts, t_behavior behavior);
+void	
+*_set_behavior(void *opts, t_behavior behavior);
 
 #endif

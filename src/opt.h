@@ -6,7 +6,7 @@
 /*   By: thschnei <thschnei@student.42perpignan.fr  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/27 20:24:37 by thschnei          #+#    #+#             */
-/*   Updated: 2025/05/02 15:25:28 by thschnei         ###   ########.fr       */
+/*   Updated: 2025/05/03 12:58:49 by thschnei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,22 +56,31 @@ typedef struct s_app
 	t_behavior	behavior;
 }	t_app;
 
-void	_optional(const t_app app);
+void
+_optional(const t_app app);
 
-void	_usage(const t_app app);
+void
+_usage(const t_app app);
 
-int		_loop_args(t_app *app, const int ac, const char **av);
+int
+_loop_args(t_app *app, const int ac, const char **av);
 
-int		_parse_args(t_app *app, const int ac, const char **av);
+int
+_parse_args(t_app *app, const int ac, const char **av);
 
-t_app	*_init_opt(const char *usage, const t_opt *opt, size_t siz, void *data);
+t_app
+*_init_opt(const char *usage, const t_opt *opt, size_t siz, void *data);
 
-t_app	*_set_behavior(t_app *app, t_behavior behavior);
+t_app
+*_set_behavior(t_app *app, t_behavior behavior);
 
-void	_not_enough(const t_app app);
+int
+_not_enough(const t_app app);
 
-void	_callstack_append(t_callstack *c, unsigned int i);
+void
+_callstack_append(t_callstack *c, unsigned int i);
 
-void	_callstack_exec(t_app *app, const char **av);
+void
+_callstack_exec(t_app *app, const char **av);
 
 #endif
